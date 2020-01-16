@@ -4,7 +4,6 @@ import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
 import dotenv from 'dotenv';
 
 import User from '../models/user_model';
-import { populateUser } from '../controllers/user_controller';
 
 dotenv.config({ silent: true });
 
@@ -22,7 +21,7 @@ const jwtOptions = {
 // username + password authentication strategy
 const localLogin = new LocalStrategy(localOptions, async (username, password, done) => {
   try {
-    const user = await populateUser(User.findOne({ username }), true /* include password */);
+    const user = User.findOne({ username });
     if (!user) {
       done(`No account with username ${username}`, false);
       return;
