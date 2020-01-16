@@ -3,10 +3,10 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import path from 'path';
 import morgan from 'morgan';
-import apiRouter from './router';
 import mongoose from 'mongoose';
+import apiRouter from './router';
 
-const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/blog';
+const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/TODO';
 // const mongoURI = 'mongodb://localhost/blog';
 mongoose.connect(mongoURI);
 mongoose.Promise = global.Promise;
