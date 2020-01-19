@@ -21,7 +21,7 @@ const jwtOptions = {
 // username + password authentication strategy
 const localLogin = new LocalStrategy(localOptions, async (username, password, done) => {
   try {
-    const user = User.findOne({ username });
+    const user = await User.findOne({ username });
     if (!user) {
       done(`No account with username ${username}`, false);
       return;
